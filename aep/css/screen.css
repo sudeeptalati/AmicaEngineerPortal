@@ -236,4 +236,11 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 .clearfix:after, .container:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden;}
 .clearfix, .container {display:block;}
 .clear {clear:both;}
-.infobox {background: #F6ECBA;    height: 16px;    margin: 20px;  padding: 10px;    border-radius: 10px;}
+
+.infobox {
+    background: #F6ECBA;
+    height: 16px;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}

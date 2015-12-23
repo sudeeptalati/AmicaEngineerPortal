@@ -65,6 +65,21 @@ class EngineerController extends RController
 		));
 	}
 
+    /**
+     * Returns the data model based on the primary key given in the GET variable.
+     * If the data model is not found, an HTTP exception will be raised.
+     * @param integer $id the ID of the model to be loaded
+     * @return Engineer the loaded model
+     * @throws CHttpException
+     */
+    public function loadModel($id)
+    {
+        $model = Engineer::model()->findByPk($id);
+        if ($model === null)
+            throw new CHttpException(404, 'The requested page does not exist.');
+        return $model;
+    }
+
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -152,40 +167,6 @@ class EngineerController extends RController
 		));
 	}
 
-     /**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer $id the ID of the model to be loaded
-	 * @return Engineer the loaded model
-	 * @throws CHttpException
-	 */
-	public function loadModel($id)
-	{
-		$model=Engineer::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
-	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param Engineer $model the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='engineer-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}
-
-
-    /*
-     *Custom functions
-     */
-
-
     /**
      *login form for engineers
      */
@@ -218,12 +199,29 @@ class EngineerController extends RController
             'model' => $model, 'message' => $message
         ));
 
-    }///end of 	protected function actionEngineerlogin()
+    }
 
-    public function actionShowmyjobs()
+
+    /*
+     *Custom functions
+     */
+
+    public function actionShowmyjobs($id)
     {
 
-        echo '<h1>Show my jobs</h1>';
+        echo '<h1>Show my jobs</h1>' . $id;
+    }///end of 	protected function actionEngineerlogin()
+
+    /**
+     * Performs the AJAX validation.
+     * @param Engineer $model the model to be validated
+     */
+    protected function performAjaxValidation($model)
+    {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'engineer-form') {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
     }
 
 

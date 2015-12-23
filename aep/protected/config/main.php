@@ -30,8 +30,8 @@ return array(
 			),
 
 			'rights'=>array(
-					'install'=>false,
-        		),
+				'install' => false,
+			),
 
 		// uncomment the following to enable the Gii tool
 		
