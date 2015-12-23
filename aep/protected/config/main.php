@@ -28,9 +28,11 @@ return array(
 					'tableProfiles' => 'profiles',
 					'tableProfileFields' => 'profiles_fields',
 			),
+
 			'rights'=>array(
-					'install'=>true,
-        ),
+					'install'=>false,
+        		),
+
 		// uncomment the following to enable the Gii tool
 		
 		'gii'=>array(
