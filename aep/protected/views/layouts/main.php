@@ -29,7 +29,10 @@
 	</div><!-- header -->
 
 	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
+		<?php
+
+		Yii::import('application.modules.user.*');
+		$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				/*				*
 				array('label'=>'Home', 'url'=>array('/site/index')),
@@ -38,11 +41,15 @@
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 
 				*/
-				array('label' => 'Rights', 'url' => array('/rights')),
+				array('label' => 'Rights', 'url' => array('/rights'),'visible'=>UserModule::isAdmin()),
+				array('label' => 'Users', 'url' => array('/user'),'visible'=>UserModule::isAdmin()),
+				///array('label' => 'Users', 'url' => array('/user')),
 
-				array('label' => 'Engineer Login', 'url' => array('/engineer/login')),
+  
 
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Servicecalls', 'url'=>array('/servicecalls/mycalls'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'My Account', 'url'=>array('/user/profile'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Login', 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>

@@ -1344,3 +1344,579 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=users
 ---
+2015/12/23 15:45:24 [error] [php] Creating default object from empty value (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/AdminController.php:106)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilterChain.php(133): AdminController->runAction()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CInlineFilter.php(58): AdminController->filterAccessControl()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(291): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): AdminController->runActionWithFilters()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): AdminController->run()
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/admin/update&id=3
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/AdminController.php (106)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php (13)
+2015/12/23 15:48:07 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY000]: General error: 8 attempt to write a readonly database. The SQL statement executed was: UPDATE 'profiles_fields' SET "id"=:yp0, "varname"=:yp1, "title"=:yp2, "field_type"=:yp3, "field_size"=:yp4, "field_size_min"=:yp5, "required"=:yp6, "match"=:yp7, "range"=:yp8, "error_message"=:yp9, "other_validator"=:yp10, "default"=:yp11, "widget"=:yp12, "widgetparams"=:yp13, "position"=:yp14, "visible"=:yp15 WHERE 'profiles_fields'."id"=4.
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/ProfileFieldController.php (370)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php (13)
+2015/12/23 15:48:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 8 attempt to write a readonly database. The SQL statement executed was: UPDATE 'profiles_fields' SET "id"=:yp0, "varname"=:yp1, "title"=:yp2, "field_type"=:yp3, "field_size"=:yp4, "field_size_min"=:yp5, "required"=:yp6, "match"=:yp7, "range"=:yp8, "error_message"=:yp9, "other_validator"=:yp10, "default"=:yp11, "widget"=:yp12, "widgetparams"=:yp13, "position"=:yp14, "visible"=:yp15 WHERE 'profiles_fields'."id"=4' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/db/ar/CActiveRecord.php(1753): CDbCommand->execute()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/db/ar/CActiveRecord.php(1127): CActiveRecord->updateByPk('4', Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/db/ar/CActiveRecord.php(809): CActiveRecord->update(NULL)
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/ProfileFieldController.php(370): CActiveRecord->save()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): ProfileFieldController->actionUpdate()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(291): CFilterChain->run()
+#12 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): CController->run('update')
+#14 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('user/profileFie...')
+#15 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#16 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/profileField/update&id=4
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/profileField/update&id=4
+---
+2015/12/23 15:55:15 [error] [exception.CDbException] exception 'CDbException' with message 'Column name must be either a string or an array.' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/db/schema/CDbCommandBuilder.php:831
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/db/schema/CDbCommandBuilder.php(624): CDbCommandBuilder->createInCondition(Object(CDbTableSchema), NULL, Array, ''t'.')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/db/ar/CActiveRecord.php(1490): CDbCommandBuilder->createPkCriteria(Object(CDbTableSchema), '3', '', Array, ''t'.')
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/AdminController.php(137): CActiveRecord->findByPk('3')
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): AdminController->actionDelete()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(291): CFilterChain->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): CController->run('delete')
+#13 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('user/admin/dele...')
+#14 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?ajax=yw0&id=3&r=user%2Fadmin%2Fdelete
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/admin
+---
+2015/12/23 16:36:36 [error] [php] Undefined variable: model (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/views/admin/index.php:18)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(869): AdminController->renderFile()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(782): AdminController->renderPartial()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/AdminController.php(48): AdminController->render()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): AdminController->actionAdmin()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilterChain.php(133): AdminController->runAction()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CInlineFilter.php(58): AdminController->filterAccessControl()
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(291): CFilterChain->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): AdminController->runActionWithFilters()
+#12 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): AdminController->run()
+#13 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/admin
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/views/admin/index.php (18)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/AdminController.php (48)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php (13)
+2015/12/23 16:36:37 [error] [php] Undefined variable: model (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/views/admin/index.php:18)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(869): AdminController->renderFile()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(782): AdminController->renderPartial()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/AdminController.php(48): AdminController->render()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): AdminController->actionAdmin()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilterChain.php(133): AdminController->runAction()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CInlineFilter.php(58): AdminController->filterAccessControl()
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(291): CFilterChain->run()
+#11 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): AdminController->runActionWithFilters()
+#12 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): AdminController->run()
+#13 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/admin
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/views/admin/index.php (18)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/AdminController.php (48)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php (13)
+2015/12/23 16:52:44 [error] [php] preg_match(): Compilation failed: invalid range in character class at offset 15 (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/validators/CRegularExpressionValidator.php:53)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CModel.php(159): CRegularExpressionValidator->validate()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/RecoveryController.php(42): UserRecoveryForm->validate()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): RecoveryController->actionRecovery()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(286): RecoveryController->runAction()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): RecoveryController->runActionWithFilters()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): RecoveryController->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/recovery/recovery
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/RecoveryController.php (42)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php (13)
+2015/12/23 16:53:19 [error] [php] preg_match(): Compilation failed: invalid range in character class at offset 15 (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/validators/CRegularExpressionValidator.php:53)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CModel.php(159): CRegularExpressionValidator->validate()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/RecoveryController.php(42): UserRecoveryForm->validate()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): RecoveryController->actionRecovery()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(286): RecoveryController->runAction()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): RecoveryController->runActionWithFilters()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): RecoveryController->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/recovery/recovery
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/RecoveryController.php (42)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php (13)
+2015/12/23 16:53:34 [error] [php] preg_match(): Compilation failed: invalid range in character class at offset 15 (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/validators/CRegularExpressionValidator.php:53)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CModel.php(159): CRegularExpressionValidator->validate()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/RecoveryController.php(42): UserRecoveryForm->validate()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): RecoveryController->actionRecovery()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(286): RecoveryController->runAction()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): RecoveryController->runActionWithFilters()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): RecoveryController->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/recovery/recovery
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/RecoveryController.php (42)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php (13)
+2015/12/23 17:44:49 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(RWebUser), 'You are not aut...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(291): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): CController->run('view')
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('user/admin/view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/admin/view&id=3
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/admin/update&id=3
+---
+2015/12/23 18:10:33 [error] [php] Array to string conversion (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/LoginController.php:22)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(286): LoginController->runAction()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): LoginController->runActionWithFilters()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): LoginController->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/login
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/LoginController.php (22)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php (13)
+2015/12/23 18:29:27 [error] [exception.CException] exception 'CException' with message 'Property "UserIdentity.verifyserverlogin" is not defined.' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CComponent.php:130
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/components/UserIdentity.php(47): CComponent->__get('verifyserverlog...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/models/UserLogin.php(52): UserIdentity->authenticate()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/validators/CInlineValidator.php(42): UserLogin->authenticate('password', Array)
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/validators/CValidator.php(201): CInlineValidator->validateAttribute(Object(UserLogin), 'password')
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CModel.php(159): CValidator->validate(Object(UserLogin), NULL)
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/LoginController.php(19): CModel->validate()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): LoginController->actionLogin()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): CController->run('')
+#11 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('user/login')
+#12 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/login
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/login
+---
+2015/12/23 18:31:53 [error] [php] Creating default object from empty value (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/LoginController.php:38)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(286): LoginController->runAction()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): LoginController->runActionWithFilters()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): LoginController->run()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/login
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/LoginController.php (38)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/modules/user/controllers/LoginController.php (20)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php (13)
+2015/12/24 14:30:24 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(RWebUser), 'You are not aut...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(291): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): CController->run('')
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('rights')
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=rights
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user
+---
+2015/12/24 14:30:25 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(RWebUser), 'You are not aut...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(291): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): CController->run('')
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('rights')
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=rights
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=rights
+---
+2015/12/24 14:40:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "admin".' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('user/registrati...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/registration/admin
+---
+2015/12/24 14:44:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "engineer/login".' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('engineer/login')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+---
+2015/12/24 14:46:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "engineer/login".' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('engineer/login')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+---
+2015/12/24 14:47:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "engineer/login".' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('engineer/login')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+---
+2015/12/24 14:48:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "engineer/login".' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('engineer/login')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+---
+2015/12/24 14:49:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "engineer/login".' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('engineer/login')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+---
+2015/12/24 14:50:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "engineer/login".' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('engineer/login')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+---
+2015/12/24 14:52:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "engineer/login".' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('engineer/login')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+---
+2015/12/24 14:53:34 [error] [php] include(UserModule.php): failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/YiiBase.php:432)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/main.php(44): spl_autoload_call()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(126): require()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(214): CContentDecorator->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(308): SiteController->endWidget()
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/column1.php(6): SiteController->endContent()
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(126): require()
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#11 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(784): SiteController->renderFile()
+#12 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/controllers/SiteController.php(32): SiteController->render()
+#13 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#14 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams()
+#15 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(286): SiteController->runAction()
+#16 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#17 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): SiteController->run()
+#18 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#19 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#20 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/main.php (44)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/column1.php (6)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/controllers/SiteController.php (32)
+2015/12/24 14:53:50 [error] [php] include(UserModule.php): failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/YiiBase.php:432)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/main.php(44): spl_autoload_call()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(126): require()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(214): CContentDecorator->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(308): SiteController->endWidget()
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/column1.php(6): SiteController->endContent()
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(126): require()
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#11 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(784): SiteController->renderFile()
+#12 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/controllers/SiteController.php(32): SiteController->render()
+#13 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#14 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams()
+#15 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(286): SiteController->runAction()
+#16 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#17 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): SiteController->run()
+#18 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#19 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#20 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/main.php (44)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/column1.php (6)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/controllers/SiteController.php (32)
+2015/12/24 14:53:51 [error] [php] include(UserModule.php): failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/YiiBase.php:432)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/main.php(44): spl_autoload_call()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(126): require()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(214): CContentDecorator->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(308): SiteController->endWidget()
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/column1.php(6): SiteController->endContent()
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(126): require()
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#11 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(784): SiteController->renderFile()
+#12 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/controllers/SiteController.php(32): SiteController->render()
+#13 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#14 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams()
+#15 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(286): SiteController->runAction()
+#16 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#17 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): SiteController->run()
+#18 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#19 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#20 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/main.php (44)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/column1.php (6)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/controllers/SiteController.php (32)
+2015/12/24 14:53:51 [error] [php] include(UserModule.php): failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/YiiBase.php:432)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/main.php(44): spl_autoload_call()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(126): require()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(214): CContentDecorator->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(308): SiteController->endWidget()
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/column1.php(6): SiteController->endContent()
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(126): require()
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#11 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(784): SiteController->renderFile()
+#12 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/controllers/SiteController.php(32): SiteController->render()
+#13 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#14 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams()
+#15 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(286): SiteController->runAction()
+#16 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#17 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): SiteController->run()
+#18 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#19 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#20 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/main.php (44)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/column1.php (6)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/controllers/SiteController.php (32)
+2015/12/24 14:53:51 [error] [php] include(UserModule.php): failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/YiiBase.php:432)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/main.php(44): spl_autoload_call()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(126): require()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(214): CContentDecorator->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(308): SiteController->endWidget()
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/column1.php(6): SiteController->endContent()
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(126): require()
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#11 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(784): SiteController->renderFile()
+#12 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/controllers/SiteController.php(32): SiteController->render()
+#13 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#14 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams()
+#15 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(286): SiteController->runAction()
+#16 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#17 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): SiteController->run()
+#18 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#19 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#20 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/main.php (44)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/column1.php (6)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/controllers/SiteController.php (32)
+2015/12/24 14:53:52 [error] [php] include(UserModule.php): failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/YiiBase.php:432)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/main.php(44): spl_autoload_call()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(126): require()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(214): CContentDecorator->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(308): SiteController->endWidget()
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/column1.php(6): SiteController->endContent()
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(126): require()
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#11 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(784): SiteController->renderFile()
+#12 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/controllers/SiteController.php(32): SiteController->render()
+#13 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#14 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams()
+#15 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(286): SiteController->runAction()
+#16 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#17 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): SiteController->run()
+#18 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#19 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#20 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/main.php (44)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/column1.php (6)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/controllers/SiteController.php (32)
+2015/12/24 14:54:21 [error] [php] include(UserModule.php): failed to open stream: No such file or directory (/Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/YiiBase.php:432)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/main.php(44): spl_autoload_call()
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(126): require()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(214): CContentDecorator->run()
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(308): SiteController->endWidget()
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/column1.php(6): SiteController->endContent()
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(126): require()
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#11 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(784): SiteController->renderFile()
+#12 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/controllers/SiteController.php(32): SiteController->render()
+#13 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#14 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(308): CInlineAction->runWithParams()
+#15 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(286): SiteController->runAction()
+#16 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#17 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): SiteController->run()
+#18 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#19 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#20 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CWebApplication->run()
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/main.php (44)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/views/layouts/column1.php (6)
+in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/protected/controllers/SiteController.php (32)
+2015/12/24 14:55:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "engineer/login".' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('engineer/login')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/profile
+---
+2015/12/24 14:55:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "engineer/login".' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('engineer/login')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/profile
+---
+2015/12/24 14:55:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "engineer/login".' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('engineer/login')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=engineer/login
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/profile
+---
+2015/12/24 14:56:33 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(RWebUser), 'You are not aut...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(291): CFilterChain->run()
+#6 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): CController->run('view')
+#8 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('user/admin/view')
+#9 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/admin/view&id=3
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/admin/update&id=3
+---
+2015/12/24 15:32:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "mycalls".' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(270): CController->missingAction('mycalls')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): CController->run('mycalls')
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('servicecalls/my...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=servicecalls/mycalls
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=user/profile
+---
+2015/12/24 15:32:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "mycalls".' in /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CController.php(270): CController->missingAction('mycalls')
+#1 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(282): CController->run('mycalls')
+#2 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/web/CWebApplication.php(141): CWebApplication->runController('servicecalls/my...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=servicecalls/mycalls
+HTTP_REFERER=http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/index.php?r=servicecalls/mycalls
+---

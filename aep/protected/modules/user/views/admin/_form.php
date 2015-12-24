@@ -1,5 +1,7 @@
 <div class="form">
-
+	<?php
+	$model->password='';
+	?>
 <?php echo CHtml::beginForm('','post',array('enctype'=>'multipart/form-data')); ?>
 
 	<p class="note"><?php echo UserModule::t('Fields with <span class="required">*</span> are required.'); ?></p>

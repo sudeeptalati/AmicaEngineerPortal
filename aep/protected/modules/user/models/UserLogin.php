@@ -71,6 +71,9 @@ class UserLogin extends CFormModel
 				case UserIdentity::ERROR_PASSWORD_INVALID:
 					$this->addError("password",UserModule::t("Password is incorrect."));
 					break;
+				case UserIdentity::ERROR_SERVER_ERROR:
+					$this->addError("status",UserModule::t("There is a server error. Please contact support"));
+					break;
 			}
 		}
 	}

@@ -20,11 +20,13 @@ $this->breadcrumbs=array(
 	$profileFields=ProfileField::model()->forAll()->sort()->findAll();
 	if ($profileFields) {
 		foreach($profileFields as $field) {
+
 			array_push($attributes,array(
 					'label' => UserModule::t($field->title),
 					'name' => $field->varname,
 					'value' => $model->profile->getAttribute($field->varname),
 				));
+
 		}
 	}
 	array_push($attributes,

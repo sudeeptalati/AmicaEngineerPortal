@@ -54,7 +54,7 @@ class User extends CActiveRecord
 			array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u','message' => UserModule::t("Incorrect symbols (A-z0-9).")),
 			array('status', 'in', 'range'=>array(self::STATUS_NOACTIVE,self::STATUS_ACTIVE,self::STATUS_BANED)),
 			array('superuser', 'in', 'range'=>array(0,1)),
-			array('username, email, createtime, lastvisit, superuser, status', 'required'),
+			array('username, email, password, createtime, lastvisit, superuser, status', 'required'),
 			array('createtime, lastvisit, superuser, status', 'numerical', 'integerOnly'=>true),
 		):((Yii::app()->user->id==$this->id)?array(
 			array('username, email', 'required'),

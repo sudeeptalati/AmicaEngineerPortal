@@ -1,6 +1,6 @@
 <?php
 
-class EngineerController extends RController
+class ServicecallsController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -13,18 +13,11 @@ class EngineerController extends RController
 	 */
 	public function filters()
 	{
-
-        /*
 		return array(
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
 		);
-        */
-        return array(
-            'rights', // perform access control for CRUD operations
-        );
-
-    }
+	}
 
 	/**
 	 * Specifies the access control rules.
@@ -33,8 +26,7 @@ class EngineerController extends RController
 	 */
 	public function accessRules()
 	{
-
-        return array(
+		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
 				'users'=>array('*'),
@@ -51,7 +43,6 @@ class EngineerController extends RController
 				'users'=>array('*'),
 			),
 		);
-
 	}
 
 	/**
@@ -65,35 +56,20 @@ class EngineerController extends RController
 		));
 	}
 
-    /**
-     * Returns the data model based on the primary key given in the GET variable.
-     * If the data model is not found, an HTTP exception will be raised.
-     * @param integer $id the ID of the model to be loaded
-     * @return Engineer the loaded model
-     * @throws CHttpException
-     */
-    public function loadModel($id)
-    {
-        $model = Engineer::model()->findByPk($id);
-        if ($model === null)
-            throw new CHttpException(404, 'The requested page does not exist.');
-        return $model;
-    }
-
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
-		$model=new Engineer;
+		$model=new Servicecalls;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Engineer']))
+		if(isset($_POST['Servicecalls']))
 		{
-			$model->attributes=$_POST['Engineer'];
+			$model->attributes=$_POST['Servicecalls'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -115,9 +91,9 @@ class EngineerController extends RController
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Engineer']))
+		if(isset($_POST['Servicecalls']))
 		{
-			$model->attributes=$_POST['Engineer'];
+			$model->attributes=$_POST['Servicecalls'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -146,7 +122,7 @@ class EngineerController extends RController
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Engineer');
+		$dataProvider=new CActiveDataProvider('Servicecalls');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -157,72 +133,41 @@ class EngineerController extends RController
 	 */
 	public function actionAdmin()
 	{
-		$model=new Engineer('search');
+		$model=new Servicecalls('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Engineer']))
-			$model->attributes=$_GET['Engineer'];
+		if(isset($_GET['Servicecalls']))
+			$model->attributes=$_GET['Servicecalls'];
 
 		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}
 
-    /**
-     *login form for engineers
-     */
-    public function actionLogin()
-    {
-        $model = new Engineer;
+	/**
+	 * Returns the data model based on the primary key given in the GET variable.
+	 * If the data model is not found, an HTTP exception will be raised.
+	 * @param integer $id the ID of the model to be loaded
+	 * @return Servicecalls the loaded model
+	 * @throws CHttpException
+	 */
+	public function loadModel($id)
+	{
+		$model=Servicecalls::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
 
-        $message = "";
-        if (isset($_POST['Engineer'])) {
-            $model->attributes = $_POST['Engineer'];
-
-            ///Logic to verify engineer, If it is true, go to admin screen
-            if ($model->verify($model->email, $model->password)) {
-                $loggedinenggmodel = Engineer::model()->findByAttributes(array('email' => $model->email));
-                if (isset($loggedinenggmodel->id)) {
-                    $message = "Login successful";
-                    $this->redirect(array('engineer/showmyjobs', 'id' => $loggedinenggmodel->id));
-                } else
-                    $message = "Incorrect Login credentials. If problem persists, please contact support.";
-
-            } else {
-                $message = "Incorrect Login credentials. If problem persists, please contact support.";
-            }
-
-
-        }//end of if(isset($_POST['Engineer']))
-
-
-        $this->render('login', array(
-            'model' => $model, 'message' => $message
-        ));
-
-    }
-
-
-    /*
-     *Custom functions
-     */
-
-    public function actionShowmyjobs($id)
-    {
-
-        echo '<h1>Show my jobs</h1>' . $id;
-    }///end of 	protected function actionEngineerlogin()
-
-    /**
-     * Performs the AJAX validation.
-     * @param Engineer $model the model to be validated
-     */
-    protected function performAjaxValidation($model)
-    {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'engineer-form') {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
-        }
-    }
-
-
-}///end of cEngineerController class
+	/**
+	 * Performs the AJAX validation.
+	 * @param Servicecalls $model the model to be validated
+	 */
+	protected function performAjaxValidation($model)
+	{
+		if(isset($_POST['ajax']) && $_POST['ajax']==='servicecalls-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+	}
+}

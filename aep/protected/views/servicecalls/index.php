@@ -1,18 +1,18 @@
 <?php
-/* @var $this EngineerController */
+/* @var $this ServicecallsController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Engineers',
+	'Servicecalls',
 );
 
 $this->menu=array(
-	array('label'=>'Create Engineer', 'url'=>array('create')),
-	array('label'=>'Manage Engineer', 'url'=>array('admin')),
+	array('label'=>'Create Servicecalls', 'url'=>array('create')),
+	array('label'=>'Manage Servicecalls', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Engineers</h1>
+<h1>Servicecalls</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

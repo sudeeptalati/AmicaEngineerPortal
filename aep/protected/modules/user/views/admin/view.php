@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 		'list'=> array(
 			CHtml::link(UserModule::t('Create User'),array('create')),
 			CHtml::link(UserModule::t('Update User'),array('update','id'=>$model->id)),
-			CHtml::linkButton(UserModule::t('Delete User'),array('submit'=>array('delete','id'=>$model->id),'confirm'=>UserModule::t('Are you sure to delete this item?'))),
+			//CHtml::linkButton(UserModule::t('Delete User'),array('submit'=>array('delete','id'=>$model->id),'confirm'=>UserModule::t('Are you sure to delete this item?'))),
 		),
 	)); 
 
