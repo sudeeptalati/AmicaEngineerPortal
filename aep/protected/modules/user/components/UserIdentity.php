@@ -24,12 +24,16 @@ class UserIdentity extends CUserIdentity
 	public function authenticate()
 	{
 
-
+		$user_email='';
 		if (strpos($this->username,"@")) {
+			$user_email=$this->username;
 			$user=User::model()->notsafe()->findByAttributes(array('email'=>$this->username));
 		} else {
-			$user=User::model()->notsafe()->findByAttributes(array('username'=>$this->username));
+			$user = User::model()->notsafe()->findByAttributes(array('username' => $this->username));
+			if ($user)
+				$user_email = $user->email;
 		}
+
 		if($user===null)
 			if (strpos($this->username,"@")) {
 				$this->errorCode=self::ERROR_EMAIL_INVALID;
@@ -43,10 +47,10 @@ class UserIdentity extends CUserIdentity
 
 		else if($user->status==-1)
 			$this->errorCode=self::ERROR_STATUS_BAN;
-			/*
-		else if($this->verifyserverlogin()==false)
+		
+		else if($this->verifyserverlogin($user_email,$user->password)==false)
 			$this->errorCode=self::ERROR_SERVER_ERROR;
-*/
+		
 
 		else {
 			$this->_id=$user->id;
@@ -65,30 +69,28 @@ class UserIdentity extends CUserIdentity
 	}
 
 
-	private function verifyserverlogin()
+	private function verifyserverlogin($e,$p)
 	{
 
-		$ch = curl_init();
-		$sc = Systemconfig::model()->findByAttributes(array('parameter' => 'server_url'));
-		$verifyurl = $sc->value;
-		$verifyurl = $verifyurl . "index.php?r=authentication/authentication";
+		//echo $p;
+		$url="index.php?r=authentication/authentication";
+		$data="email=".$e."&pwd=".$p;
+		$method='POST';
 
-		//echo $verifyurl;
-		curl_setopt($ch, CURLOPT_URL, $verifyurl);
-		curl_setopt($ch, CURLOPT_POST, 1);
-		//curl_setopt($ch, CURLOPT_POSTFIELDS,"email=sweetpullo@gmail.com&pwd=c9ebf569947258fc5263bb8d0b00192a988e99280104d5298e80d1b320deaeba");
-		curl_setopt($ch, CURLOPT_POSTFIELDS, "email=" . $this->username. "&pwd=" . hash('sha256', $this->password));
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-		$server_output = curl_exec($ch);
-
-		curl_close($ch);
-		//echo '<hr> Server says: ' . $server_output;
-		$j = json_decode($server_output);
-		if ($j[0]->{"status"} === 'OK')
-			return true;
+		$result=Systemconfig::model()->callurl($url,$data,$method);
+		
+		//echo $result;
+	 
+		$j = json_decode($result);
+ 	
+ 		if ($j)
+		{
+			if ($j[0]->{"status"} === 'OK')
+				return true;
+			else
+				return false;
+		}
 		else
-			return false;
-
+			return false;	
 	}
 }

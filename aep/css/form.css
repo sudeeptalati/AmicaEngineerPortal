@@ -38,11 +38,20 @@ div.form
 {
 }
 
+div.form input[type=submit],
+div.form input[type=button] {
+    width: 200px;
+    background: azure;
+    height: 30px;
+}
+
+
 div.form input,
 div.form textarea,
 div.form select
 {
 	margin: 0.2em 0 0.5em 0;
+	font-size: 14px;
 }
 
 div.form fieldset
@@ -55,8 +64,9 @@ div.form fieldset
 
 div.form label
 {
-	font-weight: bold;
-	font-size: 0.9em;
+	//font-weight: bold;
+	//font-size: 0.9em;
+	font-size: 1.3em;
 	display: block;
 }
 
@@ -161,4 +171,12 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 {
 	clear: left;
 	padding-left: 110px;
+}
+
+
+input[type="radio"], input[type="radio"]+label {
+	display: inline;
+}
+input[type="radio"] {
+	margin-left: 10px;
 }

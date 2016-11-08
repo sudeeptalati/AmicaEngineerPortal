@@ -59,7 +59,9 @@ class UserModule extends CWebModule
 	public $profileUrl = array("/user/profile");
 	public $returnUrl = array("/user/profile");
 	public $returnLogoutUrl = array("/user/login");
-	
+	public $engghomepage = array("/servicecalls/mycalls");
+
+
 	public $fieldsMessage = '';
 	
 	/**

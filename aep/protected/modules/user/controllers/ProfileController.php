@@ -77,7 +77,16 @@ class ProfileController extends Controller
 						$new_password->password = UserModule::encrypting($model->password);
 						$new_password->activkey=UserModule::encrypting(microtime().$model->password);
 						$new_password->save();
-						Yii::app()->user->setFlash('profileMessage',UserModule::t("New password is saved."));
+
+
+
+						///ALSO SAVE PASS oN SERVER
+					
+						$u=User::model()->findByAttributes(array('password'=>$new_password->password));
+						$rm_msg=$model->remoteupdatepass($u->email, $new_password->password );
+
+
+						Yii::app()->user->setFlash('profileMessage',UserModule::t("New password is saved ".$rm_msg));
 						$this->redirect(array("profile"));
 					}
 			}

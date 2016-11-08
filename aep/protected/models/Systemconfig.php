@@ -96,4 +96,46 @@ class Systemconfig extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-}
+
+
+
+	public function callurl($url,$data,$method)
+	{
+		$ch = curl_init();
+		$sc = Systemconfig::model()->findByAttributes(array('parameter' => 'server_url'));
+		$remote_url = $sc->value;
+		$final_url = $remote_url.$url;
+
+		//echo '<hr>'.$final_url;
+		//echo '<hr>'.$data;
+		curl_setopt($ch, CURLOPT_URL, $final_url);
+
+		curl_setopt($ch, CURLOPT_POST, 1);
+		if ($method==='POST')
+			curl_setopt($ch, CURLOPT_POST, 1);
+		else
+			curl_setopt($ch, CURLOPT_POST, 0);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$server_output = curl_exec($ch);
+		curl_close($ch);
+
+		return $server_output;
+
+	}//end of 	public function callurl()
+
+
+    public function callurlforsecuredata($url,$data,$method)
+    {
+
+        $e=UserModule::user()->email;
+        $user=User::model()->notsafe()->findByAttributes(array('email'=>$e));
+        $p=$user->password;
+        $data="engineer_email=".$e."&pwd=".$p."&data=".$data;
+
+        return $this->callurl($url,$data,$method);
+
+    }////    public function callurlforsecuredata()
+
+
+}//end of class

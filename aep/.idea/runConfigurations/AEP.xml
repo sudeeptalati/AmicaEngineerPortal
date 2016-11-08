@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="AEP" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" editBeforeRun="true" singleton="true" server_name="AEP" start_url="http://localhost/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep">
+    <method />
+  </configuration>
+</component>

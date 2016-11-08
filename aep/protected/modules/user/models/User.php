@@ -143,4 +143,25 @@ class User extends CActiveRecord
 		else
 			return isset($_items[$type]) ? $_items[$type] : false;
 	}
+
+	public function search()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id',$this->id);
+		$criteria->compare('username',$this->username,true);
+		$criteria->compare('password',$this->password,true);
+		$criteria->compare('email',$this->email,true);
+		$criteria->compare('activkey',$this->activkey,true);
+		$criteria->compare('createtime',$this->createtime);
+		$criteria->compare('lastvisit',$this->lastvisit);
+		$criteria->compare('superuser',$this->superuser);
+		$criteria->compare('status',$this->status);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
 }

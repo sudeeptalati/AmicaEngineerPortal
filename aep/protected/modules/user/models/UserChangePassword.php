@@ -26,4 +26,24 @@ class UserChangePassword extends CFormModel {
 			'verifyPassword'=>UserModule::t("Retype Password"),
 		);
 	}
+
+
+
+	public function remoteupdatepass($user_email, $encrypted_pass)
+	{
+
+		//$data='email='.$u->email.'&pwd=THI*****SISMYPASS';
+		$data='email='.$user_email.'&pwd='.$encrypted_pass;
+
+		$url="index.php?r=authentication/updatedetails";
+		$method='POST';
+		$result=Systemconfig::model()->callurl($url,$data,$method);
+		$j_result= json_decode($result);
+
+		//echo $j_result[0]->status_message;
+
+		return $j_result[0]->status_message;
+
+	}//end of 	public function remoteupdatepass()
+
 } 

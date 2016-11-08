@@ -12,24 +12,11 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'service_reference_number'); ?>
 		<?php echo $form->textField($model,'service_reference_number'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'engineer_email'); ?>
-		<?php echo $form->textArea($model,'engineer_email',array('rows'=>6, 'cols'=>50)); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'callcenter_account_id'); ?>
-		<?php echo $form->textArea($model,'callcenter_account_id',array('rows'=>6, 'cols'=>50)); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'customer_fullname'); ?>

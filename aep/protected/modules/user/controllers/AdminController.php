@@ -24,7 +24,7 @@ class AdminController extends Controller
 	{
 		return array(
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','create','update','view'),
+				'actions'=>array('admin','delete','create','update','view', 'search'),
 				'users'=>UserModule::getAdmins(),
 			),
 			array('deny',  // deny all users
@@ -113,6 +113,10 @@ class AdminController extends Controller
 				}
 				$model->save();
 				$profile->save();
+				$changepassmodel = new UserChangePassword;
+				$changepassmodel->remoteupdatepass($model->email, $model->password);
+				
+				
 				$this->redirect(array('view','id'=>$model->id));
 			} else $profile->validate();
 		}
@@ -161,5 +165,24 @@ class AdminController extends Controller
 		}
 		return $this->_model;
 	}
+
+
+	
+	
+	public function actionSearch()
+	{
+		//echo "This is serch";
+		
+		$model=new User('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['User']))
+			$model->attributes=$_GET['User'];
+			
+		$this->render('search',array(
+			'model'=>$model,
+		));
+		
+	}///end of actionSearch
+	
 	
 }

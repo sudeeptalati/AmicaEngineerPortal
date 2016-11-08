@@ -20,9 +20,9 @@ class UserLogin extends CFormModel
 	{
 		return array(
 			// username and password are required
-			array('username, password', 'required'),
+			array('username, password, rememberMe', 'required'),
 			// rememberMe needs to be a boolean
-			array('rememberMe', 'boolean'),
+			array('rememberMe', 'boolean','falseValue' => 'true', 'message'=>'You must accept all terms & conditions'),
 			// password needs to be authenticated
 			array('password', 'authenticate'),
 		);
@@ -34,7 +34,7 @@ class UserLogin extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'rememberMe'=>UserModule::t("Remember me next time"),
+			'rememberMe'=>UserModule::t("I accept all terms & conditions"),
 			'username'=>UserModule::t("username or email"),
 			'password'=>UserModule::t("password"),
 		);
@@ -50,6 +50,7 @@ class UserLogin extends CFormModel
 		{
 			$identity=new UserIdentity($this->username,$this->password);
 			$identity->authenticate();
+			
 			switch($identity->errorCode)
 			{
 				case UserIdentity::ERROR_NONE:
@@ -60,7 +61,7 @@ class UserLogin extends CFormModel
 					$this->addError("username",UserModule::t("Email is incorrect."));
 					break;
 				case UserIdentity::ERROR_USERNAME_INVALID:
-					$this->addError("username",UserModule::t("Username is incorrect."));
+					$this->addError("username",UserModule::t("Username is incorrect. Please make sure you are using the secondary login details provided in your email"));
 					break;
 				case UserIdentity::ERROR_STATUS_NOTACTIV:
 					$this->addError("status",UserModule::t("You account is not activated."));
@@ -74,7 +75,12 @@ class UserLogin extends CFormModel
 				case UserIdentity::ERROR_SERVER_ERROR:
 					$this->addError("status",UserModule::t("There is a server error. Please contact support"));
 					break;
+				default:
+					$this->addError("status",UserModule::t("KUCH TO GADABAD HAI"));
+					break;
+					
 			}
+			
 		}
 	}
 }

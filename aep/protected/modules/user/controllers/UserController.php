@@ -24,10 +24,12 @@ class UserController extends Controller
 	public function accessRules()
 	{
 		return array(
+			
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array(''),
 				'users'=>array('*'),
 			),
+			
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -49,7 +51,8 @@ class UserController extends Controller
 	 * Lists all models.
 	 */
 	public function actionIndex()
-	{
+	{	
+		
 		$dataProvider=new CActiveDataProvider('User', array(
 			'criteria'=>array(
 		        'condition'=>'status>'.User::STATUS_BANED,
@@ -59,7 +62,7 @@ class UserController extends Controller
 				'pageSize'=>Yii::app()->controller->module->user_page_size,
 			),
 		));
-
+		 
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

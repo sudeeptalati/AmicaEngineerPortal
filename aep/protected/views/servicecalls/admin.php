@@ -51,6 +51,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'callcenter_account_id',
 		'customer_fullname',
 		'customer_address',
+		
+		array(
+            'name'=>'jobstatus_id',
+            'value'=>'Jobstatus::published_item("Jobstatus",$data->jobstatus_id)',
+            'filter'=>Jobstatus::published_items('Jobstatus'),
+        ),
+        'data_sent',
+        
 		/*
 		'customer_postcode',
 		'communications',

@@ -18,7 +18,7 @@ article, aside, details, figcaption, figure, dialog, footer, header, hgroup, men
 body {line-height:1.5;background:white;}
 table {border-collapse:separate;border-spacing:0;}
 caption, th, td {text-align:left;font-weight:normal;float:none !important;}
-table, th, td {vertical-align:middle;}
+table, th, td {vertical-align:top;}
 blockquote:before, blockquote:after, q:before, q:after {content:'';}
 blockquote, q {quotes:"" "";}
 a img {border:none;}
@@ -237,17 +237,25 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 .clearfix, .container {display:block;}
 .clear {clear:both;}
 
-.infobox {
-    background: #F6ECBA;
+.info_box {
+    background: #D6F0FF;
     height: 16px;
     margin: 20px;
     padding: 10px;
     border-radius: 10px;
 }
 
+.data_box{
+    background: #D6F0FF;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
 #submenu{
     margin: 15px;
 }
+
 
 #submenu ul
 {
@@ -274,3 +282,93 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
     color: #fff;
     background-color: #369;
 }
+
+.chat_table
+{
+    width: 100%;
+
+    margin: 5px 5px 5px 5px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+#chat_text{
+    overflow: scroll;
+    height: 300px;
+    overflow-x: hidden;
+
+}
+#chat_window
+{
+    width: 325px;
+    height: 450px;
+    background: whitesmoke;
+    bottom: 1em;
+    right: 2em;
+    position: fixed;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+
+
+#amica_talkbubble {
+    padding: 10px;
+    width: auto;
+    height: auto;
+    background: white;
+    position: relative;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+#amica_talkbubble:before {
+    content:"";
+    position: absolute;
+    right: 98%;
+    top: 1px;
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-right: 26px solid white;
+    border-bottom: 13px solid transparent;
+}
+
+
+#me_talkbubble {
+    padding: 10px;
+    width: auto;
+    height: auto;
+    background: #CFD8DC;
+    position: relative;
+    -moz-border-radius:    10px;
+    -webkit-border-radius: 10px;
+    border-radius:         10px;
+}
+#me_talkbubble:before {
+    content:"";
+    position: absolute;
+    left: 98%;
+    top: 1px;
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-left: 26px solid #CFD8DC;
+    border-bottom: 13px solid transparent;
+}
+div.active {
+    background-color: blue;
+}
+
+/*
+.success {
+
+    background-color: green;
+    color: whitesmoke;
+    margin: 10px;
+    width: 60%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+*/

@@ -2,7 +2,16 @@
 $this->breadcrumbs=array(
 	UserModule::t("Profile"),
 );
-?><h2><?php echo UserModule::t('Your profile'); ?></h2>
+?>
+
+
+<div style="float:right;">	
+	<a target="_blank" href="" title='Help'>		
+		<span  class="fa fa-question-circle fa-3x" ></span>
+	</a>
+</div>
+
+<h2><?php echo UserModule::t('Your profile'); ?></h2>
 <?php echo $this->renderPartial('menu'); ?>
 
 <?php if(Yii::app()->user->hasFlash('profileMessage')): ?>

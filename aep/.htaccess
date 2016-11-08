@@ -1,7 +1,0 @@
-AuthType Basic
-AuthName "My Protected Area"
-AuthUserFile /Applications/XAMPP/htdocs/AMICA/amica_engineer_portal/AmicaEngineerPortal/aep/themes/.htpasswd
-Require valid-user
-
-#------- amicaengg
-#------- br3ak1ngB@d1957

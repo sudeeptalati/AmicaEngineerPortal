@@ -7,8 +7,8 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Engineer Portal',
-
+	'name'=>'Amica Engineers Portal',
+	'defaultController'=>'servicecalls/mycalls',
 	// preloading 'log' component
 	'preload'=>array('log'),
 
@@ -16,8 +16,10 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+
+		'application.modules.user.*',
 		'application.modules.user.models.*',
-        'application.modules.user.components.*',
+		'application.modules.user.components.*',
         'application.modules.rights.*',
         'application.modules.rights.components.*',
 	),
