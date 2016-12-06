@@ -39,7 +39,7 @@ class Servicecalls extends CActiveRecord
         return array(
             array('service_reference_number, engineer_user_id, engineer_email', 'required'),
             array('service_reference_number, engineer_user_id, jobstatus_id, created, modified', 'numerical', 'integerOnly' => true),
-            array('callcenter_account_id, customer_fullname, customer_address, customer_postcode, communications, data_recieved, data_sent', 'safe'),
+            array('callcenter_account_id, customer_fullname, customer_address, customer_postcode, communications, data_recieved, data_sent, status_log', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, service_reference_number, engineer_user_id, engineer_email, callcenter_account_id, customer_fullname, customer_address, customer_postcode, communications, data_recieved, data_sent, jobstatus_id, created, modified', 'safe', 'on' => 'search'),
@@ -78,6 +78,8 @@ class Servicecalls extends CActiveRecord
             'jobstatus_id' => 'Jobstatus',
             'created' => 'Created',
             'modified' => 'Modified',
+            'status_log' => 'Status Log',
+            
         );
     }
 
@@ -314,34 +316,38 @@ class Servicecalls extends CActiveRecord
     public function senddatatoserver($data_type)
     {
         ////prepare data for sending
-
+		$return_msg='NOTHING';
         $return_data_array = array();
 
         $return_data_array['type'] = $data_type;///is it a message or  servicecall_data
 
-        $return_data_array['engineer_email'] = UserModule::user()->email;
+        $return_data_array['engineer_email'] = $this->engineer_email;
         $return_data_array['service_reference_number'] = $this->service_reference_number;
-        $return_data_array['gomobile_account_id'] = 'AMICA';
-        $return_data_array['sent_data'] = array('data_sent' => $this->data_sent, 'communications' => $this->communications);
-
+        $return_data_array['gomobile_account_id'] = Systemconfig::model()->get_valueforparameter('api_key');
+         
+        $return_data_array['sent_data'] = array('data_sent' => $this->data_sent, 'communications' => $this->communications , 'status_log' => $this->status_log);
+		
         $data_to_be_sent_string = json_encode(array('data' => $return_data_array));
 
         $url = "index.php?r=server/getdatafromportal";
         $method = 'POST';
-	
+	 	
 		$data_to_be_sent_string=urlencode($data_to_be_sent_string);
 		//echo $data_to_be_sent_string;
-        $result = Systemconfig::model()->callurlforsecuredata($url, $data_to_be_sent_string, "POST");
 		
-		$return_msg='';
+		 
+        $result = Systemconfig::model()->callurlforsecuredata( $this->engineer_email, $url, $data_to_be_sent_string, "POST");
+		 
 		$result_json=json_decode($result);
 		
+		
+	
 		if ($result_json->status =='OK')
 			$return_msg= '<div class="flash-success">'.$result_json->status_message.'</div>';
 		else
 			$return_msg= '<div class="flash-error">'.$result_json->status_message.'</div>';
 		 					
-						
+		  	
 		
 		return $return_msg;
 		

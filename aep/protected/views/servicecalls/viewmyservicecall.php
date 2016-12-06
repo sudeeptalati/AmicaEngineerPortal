@@ -627,18 +627,18 @@ $('.chat-button').click(function(){
 
             chat_msg;
 
-            servicecalls_id='<?php echo $model->id; ?>';
+            service_reference_number='<?php echo $model->service_reference_number; ?>';
 
 
             $.ajax({
                 url: 'index.php?r=servicecalls/sendmessagetoamica',
                 type: 'post',
-                data: {'chat_msg': chat_msg, 'servicecalls_id':servicecalls_id},
+                data: {'chat_msg': chat_msg, 'service_reference_number':service_reference_number},
                 success: function (data, status) {
 
                     console.log(data);
                     //alert(data);
-                    location.reload();
+                    //location.reload();
 
 
 
@@ -653,7 +653,7 @@ $('.chat-button').click(function(){
 
         }
 
-    }
+    }///end of function replytothecchat
 
 
 var objDiv = document.getElementById("chat_text");

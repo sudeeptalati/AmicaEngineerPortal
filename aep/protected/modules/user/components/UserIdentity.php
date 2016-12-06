@@ -48,6 +48,7 @@ class UserIdentity extends CUserIdentity
 		else if($user->status==-1)
 			$this->errorCode=self::ERROR_STATUS_BAN;
 		
+		
 		else if($this->verifyserverlogin($user_email,$user->password)==false)
 			$this->errorCode=self::ERROR_SERVER_ERROR;
 		

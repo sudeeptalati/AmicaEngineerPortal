@@ -156,7 +156,7 @@ class ServicecallsController extends RController
         ) );
     }
 
-public function actionMycalls()
+	public function actionMycalls()
     {
 
         $model = new Servicecalls( 'myservicecallsearch' );
@@ -164,9 +164,15 @@ public function actionMycalls()
         $data = '';
         $url = "index.php?r=server/senddatatoportal";
         $method = 'POST';
-        $result = Systemconfig::model()->callurlforsecuredata( $url, $data, $method );
-        //echo $result;
-
+        
+        $user=User::model()->findByPk(Yii::app()->user->id);
+        
+   		$engg_email= $user->email;
+        
+        
+        
+        $result = Systemconfig::model()->callurlforsecuredata($engg_email, $url, $data, $method );
+        
         $model->savemyservicecalldata( $result );
 
 
@@ -179,7 +185,58 @@ public function actionMycalls()
         ) );
         ////Insert into table
 
-    }
+    }///end of public function actionMycalls()
+    
+
+	public function actionGetdataforengineerdesktop()
+	{
+	
+		$json_array=array('data'=>'', 'status'=>'BAD_REQUEST', 'status_message'=>'This is bad request');
+	
+	
+		 
+	 
+		$email="";
+		$pwd="";
+		
+		if(isset($_POST['email']))
+			$email=$_POST['email'];
+			
+		if(isset($_POST['pwd']))
+			$pwd=$_POST['pwd'];
+	
+		$verify_engg=Systemconfig::model()->verifyengg($email,$pwd);
+		
+		 
+		if ($verify_engg)
+		{
+			$json_array['status']='LOGIN_OK';
+			$json_array['status_message']='Successful Login.';
+			
+			$data="engineer_email=".$email."&pwd=".$pwd;
+        	$url = "index.php?r=server/senddatatoportal";
+        	$method = 'POST';
+        	$result = Systemconfig::model()->callurl( $url, $data, $method );
+        	$json_array['data']= $result;
+	
+			$model = new Servicecalls( 'myservicecallsearch' );
+
+	        $model->savemyservicecalldata( $result );
+
+				
+		}///end of if ($verify_engg)
+		else
+		{
+			$json_array['status']='INVALID_LOGIN';
+			$json_array['status_message']='Could not authenticate. Please check login details or contact support.';
+		}
+		 
+		echo json_encode($json_array);
+		
+		//echo $result;
+	}///end of public function actionGetdataforengineerdesktop()
+	
+
 
     public function actionViewmyservicecall($id)
     {
@@ -226,8 +283,6 @@ public function actionMycalls()
                            //$system_message.= 'Cannot save Image.'.var_dump( $workcarriedoutmodel->getErrors() );
                            $system_message .= '<div class="flash-error">Cannot save Image. Please contact support</div>';
                         }
-
-
                      }else {    ///$system_message .= '<div class="flash-error">NO IMAGE IS UPLOADEDt</div>';
                     }
 
@@ -240,7 +295,6 @@ public function actionMycalls()
                     $wco_array['job_completion_date'] = $workcarriedoutmodel->job_completion_date;
                     $wco_array['submission_date'] = date('d-M-Y H:i:s');
 
-
                     $wco_array['spares_used'] = $workcarriedoutmodel->spares_used;
                     $wco_array['spares_array'] = $workcarriedoutmodel->spares_array;
 
@@ -248,7 +302,6 @@ public function actionMycalls()
 
                     //echo json_encode( $wco_array );
                     $model->data_sent = $wco_json;
-
 
                     $workcarriedoutmodel->chat_message = trim( $workcarriedoutmodel->chat_message );
                     if ($workcarriedoutmodel->chat_message != '') {
@@ -261,8 +314,6 @@ public function actionMycalls()
                         array_push( $full_chat_array['chats'], $chat_array );
                         $model->communications = json_encode( $full_chat_array );
                     }
-
-
 
                     $model->jobstatus_id = '35';///it means job is submitted
 
@@ -314,43 +365,197 @@ public function actionMycalls()
 
 
     public function actionSendmessagetoamica()
-    {
-        $system_message= 'I am called';
+    { 
 
-        if(isset($_POST['servicecalls_id']))
+		
+    	  
+      	$json_array=array();
+		$json_array['status']='BAD_REQUEST'; 
+        $json_array['status_message']= 'I am called'; 
+        
+        
+ 
+        if(isset($_POST['service_reference_number']))
         {
-            $id=$_POST['servicecalls_id'];
+	        $json_array['status']='OK'; 
+    	    $json_array['status_message']= $_POST['chat_msg'];
+    	  
+            $service_reference_number=$_POST['service_reference_number'];
             $data_type='chat_message';
-
 
             $chat_msg=$_POST['chat_msg'];
 
-            $model=$this->loadModel($id);
 
-            $chat_array = array();
-            $chat_array['date'] = date( 'l jS \of F Y h:i:s A' );
-            $chat_array['person'] = 'me';
-            $chat_array['message'] = $chat_msg;
-            $fullchat = $model->communications;
-            $full_chat_array = json_decode( $fullchat, true );
-            array_push( $full_chat_array['chats'], $chat_array );
-            $model->communications = json_encode( $full_chat_array );
+			
+	        $id= Servicecalls::model()->getserviceidbyservicerefrencenumber($service_reference_number);
+  				
+  	 	 	$json_array['status_message'].= 'service_reference_number'.$service_reference_number; 
+  				
+  			 
+  			if ($id)
+  			{
+	         	$json_array['status']='S_OK'; 
+  			    $model=$this->loadModel($id);
+					
+					
+				echo $model->communications;
+				
+				
+				if ($model)
+				{
+					
+				
+				  $chat_array = array();
+				  $chat_array['date'] = date( 'l jS \of F Y h:i:s A' );
+				  $chat_array['person'] = 'me';
+				  $chat_array['message'] = $chat_msg;
+				  $fullchat = $model->communications;
+				  $full_chat_array = json_decode( $fullchat, true );
+				  array_push( $full_chat_array['chats'], $chat_array );
+				  $model->communications = json_encode( $full_chat_array );
+				
+					
+				  $model->jobstatus_id = '37';///it means message is sent to Amica
+					 
+				  if ($model->save()) {
+				  		
+					$json_array['status_message'] .= '<div class="flash-success">Data successfully Saved</div>';
+					$json_array['status_message'] .=$model->senddatatoserver($data_type);
+				  	///01563 827070	
+				  } else
+				  	{
+	    	            $system_message.= var_dump( $model->getErrors() );
+    	    	        $json_array['status_message'].='<div class="flash-error">Data cannot be successfully Saved</div>';
+					}////end of   } else
+					
+				  
+				}////end of if ($model)
+				
+				
+  			}////end of if ($id)
 
-            $model->jobstatus_id = '37';///it means message is sent to Amica
+	        else
+	        {
+	         	$json_array['status']='INVALID_REF_NO'; 
+    	  		$json_array['status_message'].= "We have got an invalid ref no.";
+	        }
+	
+  		 
+           
 
-            if ($model->save()) {
-                $system_message .= '<div class="flash-success">Data successfully Saved</div>';
-                $system_message .=$model->senddatatoserver($data_type);
-
-            } else
-                ///$system_message.= var_dump( $model->getErrors() );
-                $system_message.='<div class="flash-error">Data cannot be successfully Saved</div>';
 
         }//end of if(isset($_POST['servicecalls_id'])
+        else
+        {
+         	$json_array['status_message'].="<br>CANNOR FOND SERCINCE CID";
+         	 
+        }
+        	
+         
 
-        echo $system_message;
+        echo json_encode($json_array);
 
     }//end of actionSendmessagetoamica()
+
+
+
+	public function actionSendstatusupdatetoamica()
+	{	
+	 	$json_array=array();
+		$json_array['status']='BAD_REQUEST';
+		$json_array['status_message']='This is bad request';
+
+		$email="";
+		$pwd="";
+		
+		if(isset($_POST['email']))
+			$email=$_POST['email'];
+			
+		if(isset($_POST['pwd']))
+			$pwd=$_POST['pwd'];
+	
+		$verify_engg=Systemconfig::model()->verifyengg($email,$pwd);
+		 
+		$json_array['status_message'].="<br> verifyengg".$verify_engg;
+		 
+		if ($verify_engg)
+		{
+		
+			$json_array['status']='LOGIN_OK';
+			$json_array['status_message']='You have been successfully logged in.';
+		
+		
+			$service_ref_no= $_POST['remote_ref_no'];
+			$status_log= $_POST['status_log'];
+			$api_key= $_POST['api_key'];
+			 
+			 
+			 
+			$service_id=Servicecalls::model()->getserviceidbyservicerefrencenumber($service_ref_no);
+			
+			$json_array['status_message'].="<br> service_id".$service_id;
+		 
+			
+			if($service_id);
+			{
+			
+					
+				$json_array['status']='SERVICECALL_OK';
+				$json_array['status_message']='Service call is found.';
+		
+
+				$model=$this->loadModel($service_id);
+				$model->status_log=$status_log;
+			
+			
+				if ($model->save())
+				{
+			
+			
+				$data_type='status_log';
+				//////send to Razzmatazz Server
+				
+				$return_data_array = array();
+
+       			$return_data_array['type'] = $data_type;///is it a message or  servicecall_data
+			    $return_data_array['engineer_email'] = $email;
+		        $return_data_array['service_reference_number'] = $model->service_reference_number;
+		        $return_data_array['gomobile_account_id'] = $api_key;
+        		$return_data_array['sent_data'] = array('data_sent' => $model->data_sent, 'communications' => $model->communications , 'status_log' => $model->status_log);
+ 		
+       		 
+      
+     
+       
+     		   $data_to_be_sent_string = json_encode(array('data' => $return_data_array));
+
+		
+        		$url = "index.php?r=server/getdatafromportal";
+        		
+        		$method = 'POST';
+	
+				$data_to_be_sent_string=urlencode($data_to_be_sent_string);
+	
+	            $data="engineer_email=".$email."&pwd=".$pwd."&data=".$data_to_be_sent_string;
+         
+				
+				$result = Systemconfig::model()->callurl( $url, $data, $method );
+				
+	 			$json_array['status_message'].=  "Sending result-".$result;
+				
+				}/////end of if ($model->save())
+			}///end of if($service_id);
+		}////end of if ($verify_engg)
+		
+		
+		echo json_encode($json_array);
+		 
+	}////end of public function actionSendstatusupdatetoamica()
+	
+
+
+	
+	
 
         /**
      * Performs the AJAX validation.

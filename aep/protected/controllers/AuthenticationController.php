@@ -11,6 +11,19 @@ class AuthenticationController extends Controller
 	public function actionVerifyengg()
 	{
 		//echo '<h1>i m caled</h1>';
+		$url = "index.php?r=authentication/authentication";
+		
+		$e='sweetpullo@gmail.com';
+		$p='c9ebf569947258fc5263bb8d0b00192a988e99280104d5298e80d1b320deaeba';
+		
+		$data="email=".$e."&pwd=".$p;
+		$method='POST';
+
+		$result=Systemconfig::model()->callurl($url,$data,$method);
+		
+		echo $result;
+		
+		/*
 		$email='sweetpullo@gmail.com';
 		$pwd='c9ebf569947258fc5263bb8d0b00192a988e99280104d5298e80d1b320deaeba';
 		
@@ -33,7 +46,8 @@ class AuthenticationController extends Controller
 
 		curl_close ($ch);
 		echo($server_output);
-		
+			
+			*/
 		
 		
 		////Step 1: we will send engg id & pass word to go mobile server

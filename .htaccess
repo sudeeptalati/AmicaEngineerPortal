@@ -1,13 +1,17 @@
 php_value default_charset "UTF-8"
-
+ 
+#SetEnvIf Request_URI "/aep/index.php?r=servicecall/getdataforengineerdesktop$" test_uri
+SetEnvIf Request_URI "/aep/index.php?r=servicecall/sendmessagetoamica$" test_uri
 
 Order Deny,Allow
 Allow from all
 
-AuthUserFile /var/www/html/amicaservice.co.uk/html.portal/aep/.htpasswd
+AuthUserFile /Applications/XAMPP/xamppfiles/htdocs/rapport/forManufaturers/AmicaEngineerPortal/aep/.htpasswd
 AuthGroupFile /dev/null
 AuthName "Admin"
 AuthType Basic
+
+
 
 <Limit GET POST>
   require valid-user
@@ -17,9 +21,12 @@ AuthType Basic
   Deny from All
 </LimitExcept>
 
+
+Allow from env=test_uri
+Satisfy any
+
 php_flag register_globals 0
 php_flag magic_quotes_gpc 0
 
-#------- amica 
+#------- amica
 #------- amica1957!
- 

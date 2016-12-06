@@ -102,8 +102,9 @@ class Systemconfig extends CActiveRecord
 	public function callurl($url,$data,$method)
 	{
 		$ch = curl_init();
-		$sc = Systemconfig::model()->findByAttributes(array('parameter' => 'server_url'));
-		$remote_url = $sc->value;
+
+		$remote_url = $this->get_valueforparameter('server_url');
+
 		$final_url = $remote_url.$url;
 
 		//echo '<hr>'.$final_url;
@@ -125,17 +126,47 @@ class Systemconfig extends CActiveRecord
 	}//end of 	public function callurl()
 
 
-    public function callurlforsecuredata($url,$data,$method)
+    public function callurlforsecuredata($engg_email,$url,$data,$method)
     {
 
-        $e=UserModule::user()->email;
-        $user=User::model()->notsafe()->findByAttributes(array('email'=>$e));
+        $e=$engg_email;
+        $user=User::model()->notsafe()->findByAttributes(array('email'=>$engg_email));
         $p=$user->password;
         $data="engineer_email=".$e."&pwd=".$p."&data=".$data;
-
+        //echo $data;
         return $this->callurl($url,$data,$method);
 
     }////    public function callurlforsecuredata()
+
+
+	public function verifyengg($e, $p)
+	{
+		$url = "index.php?r=authentication/authentication";
+				
+		$data="email=".$e."&pwd=".$p;
+		$method='POST';
+		
+		
+		
+		$result=$this->callurl($url,$data,$method);
+		
+		$json=json_decode($result);
+		
+		if ($json[0]->status=="OK")
+			return true;
+		else
+			return false;
+		
+	}////end of public function verifyengg()
+	
+	public function get_valueforparameter($param)
+	{
+		$model=Systemconfig::model()->findByAttributes(array('parameter' => $param));	
+		
+		return $model->value;
+	}///end of 	public function get_apikey()
+
+
 
 
 }//end of class
