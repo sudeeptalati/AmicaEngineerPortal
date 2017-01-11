@@ -9,6 +9,7 @@
  * @property string $info
  * @property string $html
  * @property integer $active
+ * @property string $keyword
  */
 class Jobstatus extends CActiveRecord
 {
@@ -28,8 +29,10 @@ class Jobstatus extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+            array('keyword, name, html', 'required'),
+
 			array('active', 'numerical', 'integerOnly'=>true),
-			array('name, info, html', 'safe'),
+            array('keyword, name, info, html', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, info, html, active', 'safe', 'on'=>'search'),
@@ -57,8 +60,10 @@ class Jobstatus extends CActiveRecord
 			'name' => 'Name',
 			'info' => 'Info',
 			'html' => 'Html',
-			'active' => 'Active',
-		);
+            'active' => 'Active',
+            'keyword' => 'Keyword',
+
+        );
 	}
 
 	/**
@@ -84,6 +89,7 @@ class Jobstatus extends CActiveRecord
 		$criteria->compare('info',$this->info,true);
 		$criteria->compare('html',$this->html,true);
 		$criteria->compare('active',$this->active);
+        $criteria->compare('keyword',$this->keyword,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -145,5 +151,20 @@ class Jobstatus extends CActiveRecord
 		foreach($models as $model)
 			self::$_published_items[$type][$model->id]=$model->name;
 	}
+
+
+
+	public function get_status_id_by_keyword($keyword)
+    {
+
+        $model = $this->findByAttributes(array('keyword' => $keyword));
+        if ($model)
+            return $model->id;
+        else
+            return null;
+
+    }////end of public function getstatusidbyname($keyword)
+
+
 
 }

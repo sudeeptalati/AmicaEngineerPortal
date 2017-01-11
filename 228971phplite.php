@@ -1901,9 +1901,11 @@ if(isset($_GET['help']))
 	</head>
 
 	<body style="direction:<?php echo $lang['direction']; ?>;">
+	 
+	<h1>Portal - Portal - Portal - Portal - Portal - Portal - Portal - Portal </h1>
 
 	<div id='help_container'>
-
+ 
 	<?php
 
 	echo "<div class='help_list'>";
@@ -1969,6 +1971,7 @@ if(isset($_GET['help']))
 </head>
 
 <body style="direction:<?php echo $lang['direction']; ?>;">
+<h1>Portal - Portal - Portal - Portal - Portal - Portal - Portal - Portal - Portal - Portal - Portal - </h1>
 
 <?php
 

@@ -3,8 +3,8 @@
 <?php endif; ?>
 
 
-<div style="float:right;">	
-	<a target="_blank" href="" title='Help'>		
+<div style="float:right;">
+	<a target="_blank" href="" title='Help'>
 		<span  class="fa fa-question-circle fa-3x" ></span>
 	</a>
 </div>
@@ -46,6 +46,9 @@ if ($workcarriedoutmodel->product_plating_image_url == '' || $workcarriedoutmode
 if ($workcarriedoutmodel->spares_array == '' || $workcarriedoutmodel->spares_array == NULL) {
     ///initialise the spares array
     $workcarriedoutmodel->spares_array = '{"spares":[]}';
+}else
+{
+    $workcarriedoutmodel->spares_array = json_encode($workcarriedoutmodel->spares_array);
 }
 
 
@@ -76,26 +79,6 @@ $('.chat-button').click(function(){
 ?>
 
 
-<script type="text/javascript">
-    var tableallspares = '<?php echo $workcarriedoutmodel->spares_array; ?>';
-    var table_all_spares_json = JSON.parse(tableallspares);
-
-//    document.addEventListener('keyup', openaddsparesdialog(), false);
-    $(document).keypress(function(e) {
-
-        //console.log('KEY PRESSED');
-        //console.log('KEY PRESSED'+e.which );
-
-        if (e.which==1 )
-        {
-            //console.log("ctral=A pressed");
-            openaddsparesdialog();
-        }
-
-    });
-
-
-</script>
 
 
 
@@ -118,15 +101,15 @@ $('.chat-button').click(function(){
                             <h4><?php echo $model->customer_fullname; ?></h4>
                             <h4><?php echo $model->customer_address; ?></h4>
                             <h4><?php echo $model->customer_postcode; ?></h4>
-                            
-                            
+
+
                             <table>
                             	<tr>
                             		<td><i class="fa fa-phone fa-lg"></i></td>
                             		<td>
                             			<b>
-			                            <?php if (isset($j_data_recieved->Telephone))
-            		                		echo $j_data_recieved->Telephone; 
+			                            <?php if (isset($j_data_recieved->customer_telephone))
+            		                		echo $j_data_recieved->customer_telephone;
                     			        ?>
                     			        </b>
                             		</td>
@@ -135,15 +118,15 @@ $('.chat-button').click(function(){
                             		<td><i class="fa fa-mobile fa-lg"></i></td>
                             		<td>
 			                        	    <b>
-			                        	    <?php if (isset($j_data_recieved->Mobile))
-            		            	    		echo $j_data_recieved->Mobile; 
+			                        	    <?php if (isset($j_data_recieved->customer_mobile	))
+            		            	    		echo $j_data_recieved->customer_mobile;
                     			        	?>
                     			        	</b>
                             		</td>
                             	</tr>
                             </table>
-                            
-                            
+
+
                         </td>
                         <td style="text-align: right;">
                             <a target="_blank" href="https://www.google.co.uk/maps?q=<?php echo $model->customer_address . ' ' . $model->customer_postcode; ?>">View Larger Map</a>
@@ -160,8 +143,8 @@ $('.chat-button').click(function(){
         </td>
         <td>
             <div class="data_box">
-                <h4><?php echo $j_data_recieved->Brand; ?> - <?php echo $j_data_recieved->Type; ?></h4>
-                <h4><?php echo $j_data_recieved->Model; ?></h4>
+                <h4><?php echo $j_data_recieved->product_brand_name; ?> - <?php echo $j_data_recieved->product_product_type_name; ?></h4>
+                <h4><?php echo $j_data_recieved->product_model_number; ?></h4>
             </div>
         </td>
     </tr>
@@ -169,7 +152,7 @@ $('.chat-button').click(function(){
         <td colspan="2">
             <hr>
             <h3>Fault Reported</h3>
-            <div class="data_box"><?php echo $j_data_recieved->Fault; ?></div>
+            <div class="data_box"><?php echo $j_data_recieved->fault_description; ?></div>
         </td>
     </tr>
 
@@ -356,7 +339,7 @@ $('.chat-button').click(function(){
                     'htmlOptions' => array(
                         'style' => 'height:20px;',
                         'readonly' => 'true',
-                        
+
                         'tabindex'=>'8'
 
                     ),
@@ -398,12 +381,37 @@ $('.chat-button').click(function(){
 
 
             </td>
-            
+
         </tr>
     </table>
 
 
     <div class="row compactRadioGroup">
+
+
+
+        <script type="text/javascript">
+            var tableallspares = '<?php echo $workcarriedoutmodel->spares_array; ?>';
+            var table_all_spares_json = JSON.parse(tableallspares);
+
+            //    document.addEventListener('keyup', openaddsparesdialog(), false);
+            $(document).keypress(function(e) {
+
+                //console.log('KEY PRESSED');
+                //console.log('KEY PRESSED'+e.which );
+
+                if (e.which==1 )
+                {
+                    //console.log("ctral=A pressed");
+                    openaddsparesdialog();
+                }
+
+            });
+
+
+        </script>
+
+
         <?php echo $form->labelEx( $workcarriedoutmodel, 'spares_used' ); ?>
         <?php
         echo $form->radioButtonList( $workcarriedoutmodel, 'spares_used',
@@ -452,7 +460,9 @@ $('.chat-button').click(function(){
     <div class="row">
         <div id="sparestable_div" class="data_box">
             <?php //echo $form->labelEx( $workcarriedoutmodel, 'spares_array' ); ?>
-            <?php echo $form->hiddenField( $workcarriedoutmodel, 'spares_array', array('style' => 'background:#DDD; width:90%;height:100px;') ); ?>
+
+
+            <?php echo $form->textField( $workcarriedoutmodel, 'spares_array', array('style' => 'background:#DDD; width:90%;height:100px;') ); ?>
             <?php echo $form->error( $workcarriedoutmodel, 'spares_array' ); ?>
 
 
@@ -512,11 +522,10 @@ $('.chat-button').click(function(){
     <p class="note"><?php echo 'Fields with <span class="required">*</span> are required.'; ?></p>
 
 
-	
+
 	<div class="row submit">
-		<?php if ($model->jobstatus_id!=34 && $model->jobstatus_id!=35 && $model->jobstatus_id!=102): ///it means if job is approved?>
-        	<?php echo CHtml::submitButton( 'Submit The Claim' ); ?>
-    	<?php endif; ?>
+		  	<?php echo CHtml::submitButton( 'Submit The Claim' ); ?>
+
     </div>
 
 
@@ -579,8 +588,8 @@ $('.chat-button').click(function(){
 
                 </table>
             </div><!-- <div class="chat_text">    -->
-            
-            
+
+
        		<?php if ($model->jobstatus_id!=34 && $model->jobstatus_id!=35 && $model->jobstatus_id!=102): ///it means if job is approved?>
 
             <div style="text-align: right;">

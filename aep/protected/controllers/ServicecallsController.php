@@ -296,7 +296,7 @@ class ServicecallsController extends RController
                     $wco_array['submission_date'] = date('d-M-Y H:i:s');
 
                     $wco_array['spares_used'] = $workcarriedoutmodel->spares_used;
-                    $wco_array['spares_array'] = $workcarriedoutmodel->spares_array;
+                    $wco_array['spares_array'] = json_decode($workcarriedoutmodel->spares_array,true);
 
                     $wco_json = json_encode( $wco_array );
 
@@ -324,17 +324,19 @@ class ServicecallsController extends RController
 						 $system_message.= $model->senddatatoserver($data_type);
 
                     } else
-                        ///$system_message.= var_dump( $model->getErrors() );
+                  	{      ///$system_message.= var_dump( $model->getErrors() );
                         $system_message.='<div class="flash-error">Data cannot be successfully Saved</div>';
-
-                    //return;
+					}
+                  
                 }
             }
 
             // echo '<h2>Genuine User</h2>';
+
             $this->render( 'viewmyservicecall', array(
                 'model' => $model, 'workcarriedoutmodel' => $workcarriedoutmodel, 'system_message'=>$system_message
             ) );
+
 
         } else {
             $this->redirect( 'index.php?r=site/logout' );
@@ -465,6 +467,7 @@ class ServicecallsController extends RController
 		$json_array['status']='BAD_REQUEST';
 		$json_array['status_message']='This is bad request';
 
+
 		$email="";
 		$pwd="";
 		
@@ -554,6 +557,83 @@ class ServicecallsController extends RController
 	
 
 
+	public function actionSendclaimtoviaapi()
+	{
+	 	$json_array=array();
+		$json_array['status']='BAD_REQUEST';
+		$json_array['status_message']='This is bad request';
+
+		$system_message="";
+		$email="";
+		$pwd="";
+		
+		if(isset($_POST['email']))
+			$email=$_POST['email'];
+			
+		if(isset($_POST['pwd']))
+			$pwd=$_POST['pwd'];
+	
+		$verify_engg=Systemconfig::model()->verifyengg($email,$pwd);
+			 
+		if ($verify_engg)
+		{
+			$json_array['status']='LOGIN_OK';
+			$json_array['status_message']='Login Successful';
+		
+			$json_array['recieved_data']=$_POST['data_sent'];
+		  
+			$service_ref_no=$_POST['remote_ref_no'];
+		  
+			$service_id=Servicecalls::model()->getserviceidbyservicerefrencenumber($service_ref_no);
+		
+			$model = $this->loadModel( $service_id );
+	 	
+			$recieved_data_json_array=json_decode($_POST['data_sent']);
+			
+			
+			$data_to_be_sent=$recieved_data_json_array->data->sent_data->data_sent;
+			$data_communications=$recieved_data_json_array->data->sent_data->communications;
+			$data_status_log=$recieved_data_json_array->data->sent_data->status_log; 
+		    
+		    $data_type=$recieved_data_json_array->data->type; 
+		    
+		    
+		   
+		    $model->data_sent= $data_to_be_sent;
+		    $model->communications= $data_communications;
+		    $model->status_log= $data_status_log;
+
+		    
+		   if ($model->save())
+		   {
+//               $json_array['local_status']= '<div class="flash-success">Data successfully Saved</div>';
+               $json_array['local_status']= 'Data successfully Saved';
+               $json_array['razz_server_status']= $model->senddatatoserver($data_type);
+		   } else
+		   {
+		   		///$system_message.= var_dump( $model->getErrors() );
+               $json_array['local_status']= 'Data successfully Saved';
+               //$system_message.='<div class="flash-error">Data cannot be successfully Saved</div>';
+           }
+            
+
+		 
+		}///end of 	if ($verify_engg)
+
+		return $json_array;
+
+	}///end of public function actionSendclaimtoviaapi()
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 
@@ -579,4 +659,60 @@ class ServicecallsController extends RController
     }///end of protected checkiffileuploaded()
 
 
-}
+////********************************///
+////********************************///
+////********************************///
+
+
+	public function actionPostdatatorazzserverviaportal()
+	{
+	
+		$json_array=array();
+		$json_array['status']='BAD_REQUEST';
+		$json_array['status_message']='This is bad request';
+
+		$system_message="";
+		$email="";
+		$pwd="";
+		
+		if(isset($_POST['email']))
+			$email=$_POST['email'];
+			
+		if(isset($_POST['pwd']))
+			$pwd=$_POST['pwd'];
+
+
+	
+		$verify_engg=Systemconfig::model()->verifyengg($email,$pwd);
+
+
+
+    if ($verify_engg)
+    {
+        $post_data=$_POST['json_post_data'];
+        $post_data_json=json_decode($post_data);
+        $json_array['post_data_json']=$post_data_json;
+
+        ////	SAMPLE JSON DATA ON SERVER
+        ////
+        ////     {"data_type":"servicecall_data","engineer_email":"sudeeptalati@talatitools.co.in","service_reference_number":"136615","api_key":"TESTINGAMICA","sent_data":{"data_sent":{"product_serial_number_available":"0","product_serial_number_unavailable_reason":"adsadasda","product_serial_number":"00000000000000","product_plating_image_url":"","work_done":"This si sa test work done","first_visit_date":"07-Dec-2016","job_completion_date":"22-Dec-2016","submission_date":"08-Dec-2016 09:58:21","spares_used":null,"spares_array":{"spares":[{"part_number_or_name":"Ball bearing 1020334","qty":"1"},{"part_number_or_name":"Grease filter ft 50 1006929","qty":"1"}]}},"communications":{"chats":[{"date":"Tuesday 6th of December 2016 09:44:51 AM","person":"AMICA","message":"Please see details attached"},{"date":"Tuesday 6th of December 2016 10:36:22 AM","person":"me","message":"OKthis is a test one"},{"date":"Tuesday 6th of December 2016 11:06:59 AM","person":"me","message":"OKThats it"},{"date":"Tuesday 6th of December 2016 11:08:05 AM","person":"AMICA","message":"this is is the log at 11 07"},{"date":"Tuesday 6th of December 2016 11:08:26 AM","person":"me","message":"Ohwow"},{"date":"Tuesday 6th of December 2016 11:08:05 AM","person":"AMICA","message":"this is is the log at 11 07"},{"date":"Tuesday 6th of December 2016 11:10:00 AM","person":"AMICA","message":"6 dec 1109"},{"date":"Tuesday 6th of December 2016 11:10:45 AM","person":"me","message":"thanksrecieved at 11010"},{"date":"Tuesday 6th of December 2016 11:40:49 AM","person":"me","message":"Justchill"},{"date":"Tuesday 6th of December 2016 11:08:05 AM","person":"AMICA","message":"this is is the log at 11 07"},{"date":"Tuesday 6th of December 2016 11:10:00 AM","person":"AMICA","message":"6 dec 1109"},{"date":"Tuesday 6th of December 2016 11:08:05 AM","person":"AMICA","message":"this is is the log at 11 07"}]},"status_log":[{"time":"06-Dec-2016 11:11 AM","jobstatus":"Quoted to repair - awaiting result","engineer":"-Not Assigned, -Not Assigned","user":"admin","comments":""},{"time":"06-Dec-2016 11:52 AM","jobstatus":"Booked","engineer":"-Not Assigned, -Not Assigned","user":"admin","comments":""},{"time":"06-Dec-2016 11:53 AM","jobstatus":"Booked","engineer":"-Not Assigned, -Not Assigned","user":"admin","comments":""},{"time":"06-Dec-2016 11:54 AM","jobstatus":"Referred back to Manufacturer","engineer":"-Not Assigned, -Not Assigned","user":"admin","comments":""},{"time":"07-Dec-2016 09:49 AM","jobstatus":"Booked","engineer":"Careys, Stephen Kerry","user":"admin","comments":""},{"time":"07-Dec-2016 09:49 AM","jobstatus":"Booked","engineer":"Careys, Lawrence Carey ","user":"admin","comments":"Engineer Visit Date: 29-Dec-2016"},{"time":"07-Dec-2016 09:55 AM","jobstatus":"Booked","engineer":"Careys, Lawrence Carey ","user":"admin","comments":""},{"time":"07-Dec-2016 09:56 AM","jobstatus":"Booked","engineer":"Careys, Lawrence Carey ","user":"admin","comments":"Engineer Visit Date: 08-Dec-2016"},{"time":"07-Dec-2016 03:40 PM","jobstatus":"Pending More Info","engineer":"Careys, Lawrence Carey ","user":"admin","comments":""},{"time":"07-Dec-2016 03:45 PM","jobstatus":"Message Delivered ","engineer":"Careys, Lawrence Carey ","user":"admin","comments":""}]}}
+        ////
+
+        $json_array['data_transport_to_razz_server']=Servicecalls::model()->process_json_data_recived_from_rapport_engineer_desktop($post_data_json);
+
+
+    }////end of if ($verify_engg)
+
+		
+		    echo json_encode($json_array);
+		//echo json_encode($post_data_json);
+		 
+	}////end of public function actionPostdatatorazzserverviaportal()
+	
+	
+
+
+
+
+
+}///end of class
